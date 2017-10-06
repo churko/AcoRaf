@@ -6,13 +6,13 @@ using System.Web;
 
 namespace AcoRaf.Models
 {
-    public class PhoneNumberModels
+    public class PhoneNumber
     {
         [Key]
         public int Id { get; set; }
 
         public string PhoneType { get; set; }
 
-        public string PhoneNumber { get; set; }
+        public string PhoneDigits { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Web;
 
 namespace AcoRaf.Models
 {
-    public class PersonModels
+    public class Person
     {
         [Key]
         public int Id { get; set; }
@@ -23,9 +23,9 @@ namespace AcoRaf.Models
 
         public string FullName => string.Format("{0}, {1}", Surname, Name);
 
-        ICollection<AddressModels> Addresses { get; set; }
+        ICollection<Address> Addresses { get; set; }
 
-        ICollection<PhoneNumberModels> PhoneNumbers { get; set; }
+        ICollection<PhoneNumber> PhoneNumbers { get; set; }
 
     }
 }

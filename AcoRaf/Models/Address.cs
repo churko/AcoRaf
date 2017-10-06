@@ -6,7 +6,7 @@ using System.Web;
 
 namespace AcoRaf.Models
 {
-    public class AddressModels
+    public class Address
     {
         [Key]
         public int Id { get; set; }

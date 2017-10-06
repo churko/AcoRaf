@@ -6,7 +6,7 @@ using System.Web;
 
 namespace AcoRaf.Models
 {
-    public class VehicleModels
+    public class Vehicle
     {
         [Key]
         public int Id { get; set; }
