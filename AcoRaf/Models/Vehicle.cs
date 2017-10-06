@@ -9,7 +9,7 @@ namespace AcoRaf.Models
     public class Vehicle
     {
         [Key]
-        public int Id { get; set; }
+        public int VehicleId { get; set; }
 
         public string Plate { get; set; }
 
