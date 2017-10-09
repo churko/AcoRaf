@@ -2,6 +2,7 @@
 using AcoRaf.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -66,20 +67,36 @@ namespace AcoRaf.Controllers
         }
 
         // GET: Vehicle/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var vehicle = db.Vehicles.Find(id);
+
+            if (vehicle == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(vehicle);
         }
 
         // POST: Vehicle/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Vehicle vehicle)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(vehicle).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(vehicle);
             }
             catch
             {
@@ -88,24 +105,47 @@ namespace AcoRaf.Controllers
         }
 
         // GET: Vehicle/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var vehicle = db.Vehicles.Find(id);
+
+            if (vehicle == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(vehicle);
         }
 
         // POST: Vehicle/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, Vehicle vehicle)
         {
             try
             {
-                // TODO: Add delete logic here
+                if (ModelState.IsValid)
+                {
+                    vehicle = db.Vehicles.Find(id);
 
-                return RedirectToAction("Index");
+                    if(vehicle == null)
+                    {
+                        return HttpNotFound();
+                    }
+
+                    db.Vehicles.Remove(vehicle);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(vehicle);
             }
             catch
             {
-                return View();
+                return View(vehicle);
             }
         }
     }
