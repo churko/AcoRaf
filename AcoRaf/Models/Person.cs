@@ -9,7 +9,7 @@ namespace AcoRaf.Models
     public class Person
     {
         [Key]
-        public int Id { get; set; }
+        public int PersonId { get; set; }
 
         public string Surname { get; set; }
 

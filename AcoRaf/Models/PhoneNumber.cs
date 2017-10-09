@@ -9,7 +9,7 @@ namespace AcoRaf.Models
     public class PhoneNumber
     {
         [Key]
-        public int Id { get; set; }
+        public int PhoneNumberId { get; set; }
 
         public string PhoneType { get; set; }
 

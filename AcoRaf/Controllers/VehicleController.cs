@@ -3,6 +3,7 @@ using AcoRaf.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -19,9 +20,21 @@ namespace AcoRaf.Controllers
         }
 
         // GET: Vehicle/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            return View();
+            if(id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var vehicle = db.Vehicles.Find(id);       
+            
+            if(vehicle == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(vehicle);
         }
 
         // GET: Vehicle/Create
