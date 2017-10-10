@@ -21,5 +21,7 @@ namespace AcoRaf.Models
 
         public int Capacity { get; set; }
 
+        public DateTime LastServiceDate { get; set; }
+
     }
 }

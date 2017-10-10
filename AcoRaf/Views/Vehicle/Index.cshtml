@@ -26,6 +26,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Capacity)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastServiceDate)
+        </th>
         <th></th>
     </tr>
 
@@ -45,6 +48,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Capacity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastServiceDate)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.VehicleId }) |
